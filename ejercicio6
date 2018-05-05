@@ -1,0 +1,55 @@
+#! /bin/bash
+#script 6
+
+source $(dirname $0)/common
+
+printf "Comando: "
+read -r comando
+
+if [[ $comando == "who" ]]; then
+	who
+fi
+
+if [[ $comando == "ps" ]]; then
+	ps
+fi
+
+if [[ $comando == "df" ]]; then
+	df
+fi
+
+if [[ $comando == "du" ]]; then
+	du
+fi
+
+if [[ $comando == "grep" ]]; then
+	printf "ingrese el comando de grep: "
+	read -r comandoGrep
+	printf "ingrese palabra: "
+	read -r palabra
+	printf "ingrese el archivo: "
+	read -r archivo
+	
+	grep $comandoGrep $palabra $archivo
+fi
+
+if [[ $comando == "lp" ]]; then
+	printf "ingrese el archivo a imprimir: "
+	read -r archivo
+	
+	lp $archivo
+fi
+
+if [[ $comando == "ls" ]]; then
+	ls
+fi
+
+if [[ $comando == "cat" ]]; then
+	printf "ingrese el nombre del archivo: "
+	read -r archivoCat
+	
+	cat $archivoCat
+fi	
+
+
+
