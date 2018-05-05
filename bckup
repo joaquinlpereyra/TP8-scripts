@@ -1,0 +1,74 @@
+#!/bin/bash
+
+source $(dirname $0)/common
+
+function simple_backup() {
+    srcs=()
+    while (( "$#" )); do
+        srcs+=($1)
+        shift
+    done
+    cp $srcs .backup
+    return $?
+}
+
+function rsync_backup() {
+    srcs=()
+    while (( "$#" )); do
+        srcs+=($1)
+        shift
+    done
+    rsync -a $srcs .backup
+    return $?
+}
+
+function restore() {
+    where=$1
+    cp .backup/* where
+    return $?
+}
+
+function list() {
+    #would have liked to use tree, but it is not available by default
+    find .backup/ | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+    return $?
+}
+
+if [[ ! -d ".backup" ]]; then
+    mkdir ".backup"
+fi
+
+USAGE="
+Silly script to backup your files. There are four usages available.\n
+\tSIMPLE: will use cp to copy the contents of files to a backup folder\n
+\t\tbckup --simple file ...\n
+\tRSYNC: will use rsync to backup the files to a folder\n
+\t\tbckup --rsync file ...\n
+\tLS: will show the contents of the backup folder in a tree structure\n
+\t\tbckup --ls\n
+\tRESTORE: will restore the contents of the backup folder to dest using cp\n
+\t\tbckup --restore dest\n
+"
+
+
+if [[ "$1" == "--simple" ]]; then
+    shift
+    simple_backup "$@"
+    return $?
+elif [[ "$1" == "--rsync" ]]; then
+    shift
+    rsync_backup "$@"
+    return $?
+elif [[ "$1" == "--restore" ]]; then
+    shift
+    restore "$@"
+    return $?
+elif [[ "$1" == "--ls" ]]; then
+    shift
+    list
+    return $?
+else 
+    echo -e $USAGE
+    exit 1
+fi
+shift
