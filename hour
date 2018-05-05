@@ -1,0 +1,2 @@
+fecha=`date '+%y-%m-%d: %Hhora: %Mminutos: %Ssegundos: '`
+echo $fecha
