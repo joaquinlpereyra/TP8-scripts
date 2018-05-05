@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ $1 == "-v" ]]; then
+    echo "TP8 script collection - Version 1.0"
+fi
