@@ -1,0 +1,31 @@
+#!/bin/bash
+#script item 2
+
+source $($dirname $0)/common
+
+
+read -r comando
+read -r directorio
+
+if [[ $comando == 'mkdir' ]]; then 
+	mkdir $directorio
+fi
+
+if [[ $comando == 'ls' ]]; then
+	ls
+fi
+
+if [[ $comando == 'rm' ]]; then
+	rm -r $directorio
+fi
+
+
+
+
+
+
+
+
+
+
+
