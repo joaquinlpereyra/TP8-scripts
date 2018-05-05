@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source $(dirname $0)/common
+
+# if we don't find the file, create the headers
+if [[ ! -f phones.txt ]]; then
+    echo -e "NAME\tPHONE" >> phones.txt
+fi
+
+if [[ "$1" == "ls" ]]; then
+    cat phones.txt
+    exit $?
+fi
+
+echo "Please, enter the name and phone number of the person you wish to add to your phone book"
+printf "NAME: "
+read -r NAME 
+printf "PHONE: "
+read -r PHONE
+
+echo -e "$NAME\t$PHONE" >> phones.txt
+
