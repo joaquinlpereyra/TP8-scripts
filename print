@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source $(dirname $0)/common
+
+if [[ $1 == "--pdf" ]]; then 
+    cmd="lpr -P PDF"
+    shift
+else 
+    cmd="lpr"
+fi
+
+while (( "$#" )); do
+    cat "$1" | $($cmd)
+shift
+done

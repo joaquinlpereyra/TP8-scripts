@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source $(dirname $0)/common
+
+if [[ -z "${1// }" ]]; then
+    echo "Either use the --all flag or provide an username"
+    exit 1
+fi
+
+if [[ $1 == "--all" ]]; then
+    ./users
+    ps -ef
+    exit $?
+fi
+
+w $1
+who | grep "$1"
+if [[ $? != 0 ]]; then
+    echo "User not logged in!"
+    exit 0
+fi
+ps -f -u $1
