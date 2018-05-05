@@ -1,0 +1,26 @@
+#! /bin/bash
+#script 6
+
+if [[ $1 == "--all" ]]; then
+	du -mac "/home/" -d 1
+	exit $?
+fi	
+
+printf "ingrese el nombre de usuario: "
+read -r usuario
+
+while [[ ! -d "/home/$usuario" ]]; do
+	printf "el usuario no exixte, ingrese otro: "
+	read -r usuario
+done
+
+if [[ $1 == "kb" ]]; then
+	du -kac "/home/$usuario/" | tail -n 1
+
+else 
+	du -mac "/home/$usuario/" | tail -n 1
+fi
+exit $?
+
+
+
