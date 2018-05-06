@@ -50,6 +50,3 @@ if [[ $comando == "cat" ]]; then
 	
 	cat $archivoCat
 fi	
-
-
-
