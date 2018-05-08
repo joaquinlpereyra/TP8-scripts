@@ -53,3 +53,15 @@ Muestra información sobre todos los usuarios en el sistema, logueados o no.
 Simple utilidad que sirve de wrapper para comandos.
 
 El comando sera pedido interactivamente, y puede ser who, ps, df, du grep, lp, ls o cat.
+
+##ComparaString
+
+Compara si lo que està almacenado dentro de una variable es de tipo string. 
+
+##fs
+
+Muestra el formato de los archivos del filesystem
+
+##fechas
+
+Muestra en pantalla el año, dìa, fecha, horas, minutos y segundos. 
