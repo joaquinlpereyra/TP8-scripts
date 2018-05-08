@@ -1,0 +1,55 @@
+Guía de uso
+-----------
+
+Los scripts deberían entenderse de manera relativamente sencilla por su cuenta.
+Ninguno necesita permiso de root, y pueden ejecutarse sencillamente con ./script
+
+## backup
+
+Hace un backup de archivos. Puede funcionar con cp o con rsync. Ejecutar con --help para más información.
+
+## directorios
+
+Crea, lista y elimina directorios. Los paths se piden de manera interactiva.
+
+## homeusage
+
+Muestra cuanto espacio ocupa en disco la carpeta home de un usuario. El usuario se pide de manera interactiva.
+
+Si se especifica la flag --all, muestra el espacio en disco ocupado por el home de todos los usuarios.
+
+Si se especifica la flag --kb, muestra el espacio en KB.
+
+## phones
+
+Simple agenda con nombres y números de telefono.
+
+Si el primer agumento es "ls" (./phones ls) se listan los contenidos de la agenda.
+
+Caso contrario, se pide al usuario de manera interactiva un nombre y un telefono.
+
+## print
+
+Imprime archivos. Toma como argumentos una cantidad arbitraria de archivos.
+
+Si el primer argumento es el flag --pdf, los archivos se imprimen a PDF.
+
+## ps
+
+Muestra informacion sobre los procesos de un usuario y sobre el mismo.
+
+Si se usa la flag --all, muestra ifnormacion sobre todos los usuarios y sus procesos.
+
+Si no, el primer argumento debe ser un nombre de usuario valido.
+
+Si el usuario no está logueado en el sistema, se informará en pantalla.
+
+## users
+
+Muestra información sobre todos los usuarios en el sistema, logueados o no.
+
+## wrappers
+
+Simple utilidad que sirve de wrapper para comandos.
+
+El comando sera pedido interactivamente, y puede ser who, ps, df, du grep, lp, ls o cat.
